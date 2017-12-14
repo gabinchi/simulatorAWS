@@ -14,14 +14,12 @@ object Simulate {
       """
         |records per second
         |IP
-        |S3 Bucket Name
-        |S3 Key Name
       """.stripMargin
-    if (args.length != 4)
-      throw new java.lang.IllegalArgumentException("Missing argument")
+    if (args.length != 2)
+      throw new java.lang.IllegalArgumentException(f"Missing argument: $usage")
 
     // Parse args
-    val (recPerSec, ip, s3bucketName, s3keyName) = (args(0).toInt, args(1), args(2), args(3))
+    val (recPerSec, ip) = (args(0).toInt, args(1))
 
     // Load example data which will be sent
     val s3Client = AmazonS3ClientBuilder.defaultClient()
